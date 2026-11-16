@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, MessageCircle, Menu, X, UtensilsCrossed } from 'lucide-react';
+import { Phone, MessageCircle, Menu, X, UtensilsCrossed, Sparkles } from 'lucide-react';
 import { ClientConfig } from '../types';
+import { useNavigation } from '../context/NavigationContext';
 
 interface HeaderProps {
   config: ClientConfig;
 }
 
 export const Header: React.FC<HeaderProps> = ({ config }) => {
+  const { currentPage, navigateTo } = useNavigation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -19,16 +21,18 @@ export const Header: React.FC<HeaderProps> = ({ config }) => {
   }, []);
 
   const navLinks = [
-    { label: 'Menu', href: '#menu' },
-    { label: 'Specialties', href: '#specialties' },
-    { label: 'About', href: '#about' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'Reviews', href: '#reviews' },
-    { label: 'Reserve', href: '#reserve' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Home', action: () => navigateTo('home'), isActive: currentPage === 'home' },
+    { label: 'Full Menu', action: () => navigateTo('menu'), isActive: currentPage === 'menu' },
+    { label: 'Specialties', action: () => navigateTo('home', 'specialties') },
+    { label: 'About', action: () => navigateTo('home', 'about') },
+    { label: 'Gallery', action: () => navigateTo('home', 'gallery') },
+    { label: 'Reviews', action: () => navigateTo('home', 'reviews') },
+    { label: 'Reserve Table', action: () => navigateTo('home', 'reserve') },
+    { label: 'Contact', action: () => navigateTo('home', 'contact') },
   ];
 
-  const handleLinkClick = () => {
+  const handleNavClick = (action: () => void) => {
+    action();
     setMobileMenuOpen(false);
   };
 
@@ -43,7 +47,11 @@ export const Header: React.FC<HeaderProps> = ({ config }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo / Brand Name */}
-          <a href="#" className="flex items-center gap-3 group">
+          <button
+            type="button"
+            onClick={() => navigateTo('home')}
+            className="flex items-center gap-3 group text-left cursor-pointer"
+          >
             <div className="w-10 h-10 rounded-full bg-amber-600/20 border border-amber-500/40 flex items-center justify-center text-amber-500 group-hover:bg-amber-600 group-hover:text-white transition-all">
               <UtensilsCrossed className="w-5 h-5" />
             </div>
@@ -55,18 +63,23 @@ export const Header: React.FC<HeaderProps> = ({ config }) => {
                 Kitchen & Cafe
               </span>
             </div>
-          </a>
+          </button>
 
           {/* Desktop Navigation */}
-          <nav aria-label="Primary" className="hidden lg:flex items-center gap-8">
+          <nav aria-label="Primary" className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.label}
-                href={link.href}
-                className="text-sm font-medium text-stone-300 hover:text-amber-400 transition-colors"
+                type="button"
+                onClick={() => handleNavClick(link.action)}
+                className={`text-xs font-semibold tracking-wide transition-colors cursor-pointer py-1 ${
+                  link.isActive
+                    ? 'text-amber-400 border-b-2 border-amber-400 pb-0.5'
+                    : 'text-stone-300 hover:text-amber-400'
+                }`}
               >
                 {link.label}
-              </a>
+              </button>
             ))}
           </nav>
 
@@ -104,7 +117,7 @@ export const Header: React.FC<HeaderProps> = ({ config }) => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-stone-800/80 border border-stone-700 text-stone-300 hover:text-white"
+              className="p-2 rounded-lg bg-stone-800/80 border border-stone-700 text-stone-300 hover:text-white cursor-pointer"
               aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
               aria-expanded={mobileMenuOpen}
             >
@@ -118,14 +131,19 @@ export const Header: React.FC<HeaderProps> = ({ config }) => {
           <div className="lg:hidden mt-4 pb-6 pt-2 border-t border-stone-800/80 bg-stone-950/95 backdrop-blur-xl rounded-2xl p-5 shadow-2xl space-y-4 animate-in fade-in slide-in-from-top-4 duration-200">
             <nav className="flex flex-col space-y-2">
               {navLinks.map((link) => (
-                <a
+                <button
                   key={link.label}
-                  href={link.href}
-                  onClick={handleLinkClick}
-                  className="px-3 py-2 text-base font-medium text-stone-200 hover:text-amber-400 hover:bg-stone-900 rounded-lg transition-all"
+                  type="button"
+                  onClick={() => handleNavClick(link.action)}
+                  className={`text-left px-3 py-2.5 text-sm font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-between ${
+                    link.isActive
+                      ? 'bg-amber-500/15 text-amber-400 border border-amber-500/30'
+                      : 'text-stone-200 hover:text-amber-400 hover:bg-stone-900'
+                  }`}
                 >
-                  {link.label}
-                </a>
+                  <span>{link.label}</span>
+                  {link.isActive && <Sparkles className="w-3.5 h-3.5 text-amber-400" />}
+                </button>
               ))}
             </nav>
 

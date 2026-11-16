@@ -30,9 +30,9 @@ export const HomePage: React.FC<HomePageProps> = ({ config }) => {
         <Specialties config={config} />
       </ScrollReveal>
 
-      {/* 4. Interactive Digital Menu & WhatsApp Cart */}
+      {/* 4. Interactive Digital Menu & WhatsApp Cart (Preview Mode: 6 dishes with Full Menu redirect) */}
       <ScrollReveal direction="up" delay={100} duration={700}>
-        <MenuSection config={config} />
+        <MenuSection config={config} isPreview={true} />
       </ScrollReveal>
 
       {/* 5. Online Table Reservations */}

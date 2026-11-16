@@ -1,26 +1,33 @@
 import React from 'react';
 import { UtensilsCrossed, Phone, MapPin, Mail, Instagram, Facebook } from 'lucide-react';
 import { ClientConfig } from '../types';
+import { useNavigation } from '../context/NavigationContext';
 
 interface FooterProps {
   config: ClientConfig;
 }
 
 export const Footer: React.FC<FooterProps> = ({ config }) => {
+  const { navigateTo } = useNavigation();
+
   return (
     <footer className="bg-stone-950 border-t border-stone-800 pt-16 pb-24 sm:pb-16 text-stone-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-stone-800/80">
           {/* Brand Col */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-amber-600/20 border border-amber-500/40 flex items-center justify-center text-amber-500">
+            <button
+              type="button"
+              onClick={() => navigateTo('home')}
+              className="flex items-center gap-3 text-left cursor-pointer group"
+            >
+              <div className="w-9 h-9 rounded-full bg-amber-600/20 border border-amber-500/40 flex items-center justify-center text-amber-500 group-hover:bg-amber-600 group-hover:text-white transition-all">
                 <UtensilsCrossed className="w-4 h-4" />
               </div>
-              <span className="font-serif text-xl font-bold text-white">
+              <span className="font-serif text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
                 {config.businessName}
               </span>
-            </div>
+            </button>
             <p className="text-xs leading-relaxed text-stone-400">
               {config.shortAbout}
             </p>
@@ -56,12 +63,69 @@ export const Footer: React.FC<FooterProps> = ({ config }) => {
               Quick Navigation
             </h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#menu" className="hover:text-amber-400 transition-colors">Our Menu</a></li>
-              <li><a href="#specialties" className="hover:text-amber-400 transition-colors">Chef's Specialties</a></li>
-              <li><a href="#gallery" className="hover:text-amber-400 transition-colors">Courtyard Ambience</a></li>
-              <li><a href="#reviews" className="hover:text-amber-400 transition-colors">Guest Reviews</a></li>
-              <li><a href="#reserve" className="hover:text-amber-400 transition-colors">Table Reservations</a></li>
-              <li><a href="#contact" className="hover:text-amber-400 transition-colors">Location & Hours</a></li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => navigateTo('home')}
+                  className="hover:text-amber-400 transition-colors cursor-pointer text-left"
+                >
+                  Home Overview
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => navigateTo('menu')}
+                  className="hover:text-amber-400 transition-colors cursor-pointer text-left"
+                >
+                  Full Culinary Menu
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => navigateTo('home', 'specialties')}
+                  className="hover:text-amber-400 transition-colors cursor-pointer text-left"
+                >
+                  Chef's Specialties
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => navigateTo('home', 'gallery')}
+                  className="hover:text-amber-400 transition-colors cursor-pointer text-left"
+                >
+                  Courtyard Ambience
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => navigateTo('home', 'reviews')}
+                  className="hover:text-amber-400 transition-colors cursor-pointer text-left"
+                >
+                  Guest Reviews
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => navigateTo('home', 'reserve')}
+                  className="hover:text-amber-400 transition-colors cursor-pointer text-left"
+                >
+                  Table Reservations
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => navigateTo('home', 'contact')}
+                  className="hover:text-amber-400 transition-colors cursor-pointer text-left"
+                >
+                  Location & Hours
+                </button>
+              </li>
             </ul>
           </div>
 

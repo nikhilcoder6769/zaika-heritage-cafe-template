@@ -1,24 +1,39 @@
 import React, { useState, useMemo } from 'react';
-import { MessageCircle, Flame, Plus, Check } from 'lucide-react';
+import { MessageCircle, Flame, Plus, Check, ArrowRight, Search, UtensilsCrossed } from 'lucide-react';
 import { ClientConfig, MenuItem, DietType } from '../types';
 import { ScrollReveal } from './ScrollReveal';
+import { useNavigation } from '../context/NavigationContext';
 
 interface MenuSectionProps {
   config: ClientConfig;
+  isPreview?: boolean;
 }
 
-export const MenuSection: React.FC<MenuSectionProps> = ({ config }) => {
+export const MenuSection: React.FC<MenuSectionProps> = ({ config, isPreview = false }) => {
+  const { navigateTo } = useNavigation();
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [dietFilter, setDietFilter] = useState<'all' | DietType>('all');
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedItems, setSelectedItems] = useState<{ [id: string]: number }>({});
 
   const filteredItems = useMemo(() => {
-    return config.menuItems.filter((item) => {
+    let items = config.menuItems.filter((item) => {
       const matchesCategory = activeCategory === 'all' || item.category === activeCategory;
       const matchesDiet = dietFilter === 'all' || item.diet === dietFilter;
-      return matchesCategory && matchesDiet;
+      const matchesSearch =
+        searchQuery === '' ||
+        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.description.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesCategory && matchesDiet && matchesSearch;
     });
-  }, [config.menuItems, activeCategory, dietFilter]);
+
+    if (isPreview) {
+      // Show curated top 6 popular/chef-special items on the home page preview
+      items = items.slice(0, 6);
+    }
+
+    return items;
+  }, [config.menuItems, activeCategory, dietFilter, searchQuery, isPreview]);
 
   const handleAddItem = (item: MenuItem) => {
     setSelectedItems((prev) => ({
@@ -57,20 +72,39 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ config }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-          <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold">
-            Interactive Digital Menu
+          <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold inline-flex items-center gap-1.5">
+            <UtensilsCrossed className="w-3.5 h-3.5" />
+            {isPreview ? 'Menu Highlights' : 'Complete Culinary Catalog'}
           </span>
           <h2 className="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight">
-            Explore Our Culinary Delights
+            {isPreview ? 'Signature Dishes Preview' : 'Explore Our Full Menu'}
           </h2>
           <p className="text-stone-400 text-sm sm:text-base">
-            Prepared fresh to order using hand-roasted spices, farm vegetables, and natural charcoal embers.
+            {isPreview
+              ? 'A curated selection of our most loved charcoal tandoor and royal dum specialties.'
+              : 'Prepared fresh to order using hand-roasted spices, farm vegetables, and natural charcoal embers.'}
           </p>
         </div>
 
+        {/* Search Bar (Only on Full Menu Page) */}
+        {!isPreview && (
+          <div className="max-w-md mx-auto mb-8">
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400" />
+              <input
+                type="text"
+                placeholder="Search dishes (e.g. Biryani, Paneer, Naan, Chai)..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-11 pr-4 py-3 rounded-2xl bg-stone-900 border border-stone-800 text-sm text-stone-100 placeholder-stone-500 focus:outline-none focus:border-amber-500 transition-colors"
+              />
+            </div>
+          </div>
+        )}
+
         {/* Filters Bar */}
         <div className="space-y-6 mb-12">
-          {/* Category Tabs (Scrollable on mobile) */}
+          {/* Category Tabs */}
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none justify-start sm:justify-center">
             {config.categories.map((cat) => (
               <button
@@ -146,9 +180,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ config }) => {
                 duration={500}
                 className="h-full"
               >
-                <div
-                  className="group p-5 rounded-2xl bg-stone-900/60 border border-stone-800/80 hover:border-amber-500/40 transition-all duration-300 flex flex-col justify-between h-full hover:-translate-y-1"
-                >
+                <div className="group p-5 rounded-2xl bg-stone-900/60 border border-stone-800/80 hover:border-amber-500/40 transition-all duration-300 flex flex-col justify-between h-full hover:-translate-y-1">
                   <div>
                     <div className="flex items-start justify-between gap-4 mb-3">
                       <div className="flex-1">
@@ -238,7 +270,28 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ config }) => {
           })}
         </div>
 
-        {/* WhatsApp Order Action Bar (Sticky or bottom banner when items are selected) */}
+        {/* View Full Menu CTA Button (Only shown on Home Page Preview) */}
+        {isPreview && (
+          <div className="mt-14 text-center">
+            <ScrollReveal direction="up" delay={150}>
+              <div className="inline-flex flex-col sm:flex-row items-center justify-center gap-4 p-2 rounded-2xl bg-stone-900/60 border border-stone-800/80 backdrop-blur-md">
+                <span className="text-xs text-stone-300 px-4 py-2 font-medium">
+                  Showing 6 of {config.menuItems.length}+ authentic dishes & beverages
+                </span>
+                <button
+                  type="button"
+                  onClick={() => navigateTo('menu')}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-xl text-sm font-bold text-stone-950 bg-amber-500 hover:bg-amber-400 shadow-xl shadow-amber-500/20 transition-all hover:scale-105 active:scale-95 group cursor-pointer"
+                >
+                  <span>Explore Full Menu & Prices</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                </button>
+              </div>
+            </ScrollReveal>
+          </div>
+        )}
+
+        {/* WhatsApp Order Floating Summary Drawer */}
         {totalSelectedCount > 0 && (
           <div className="fixed bottom-20 left-4 right-4 sm:bottom-6 sm:max-w-xl sm:mx-auto z-40 animate-in slide-in-from-bottom-6 duration-300">
             <div className="p-4 rounded-2xl bg-amber-500 text-stone-950 shadow-2xl flex items-center justify-between gap-4 border border-amber-300">

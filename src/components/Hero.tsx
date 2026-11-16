@@ -1,12 +1,14 @@
 import React from 'react';
 import { Star, ArrowRight, Utensils, Clock, MapPin, Sparkles } from 'lucide-react';
 import { ClientConfig } from '../types';
+import { useNavigation } from '../context/NavigationContext';
 
 interface HeroProps {
   config: ClientConfig;
 }
 
 export const Hero: React.FC<HeroProps> = ({ config }) => {
+  const { navigateTo } = useNavigation();
   return (
     <section className="relative min-h-[92vh] flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden bg-stone-950">
       {/* Background Hero Image with atmospheric overlays */}
@@ -61,21 +63,23 @@ export const Hero: React.FC<HeroProps> = ({ config }) => {
 
         {/* Primary Call to Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-          <a
-            href="#menu"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-base font-bold text-stone-950 bg-amber-500 hover:bg-amber-400 shadow-xl shadow-amber-500/25 transition-all hover:scale-105 active:scale-95 group"
+          <button
+            type="button"
+            onClick={() => navigateTo('menu')}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-base font-bold text-stone-950 bg-amber-500 hover:bg-amber-400 shadow-xl shadow-amber-500/25 transition-all hover:scale-105 active:scale-95 group cursor-pointer"
           >
             <Utensils className="w-5 h-5 text-stone-950 group-hover:rotate-12 transition-transform" />
             <span>Explore Full Menu</span>
-            <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-          </a>
+            <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1.5 transition-transform" />
+          </button>
 
-          <a
-            href="#reserve"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-base font-semibold text-stone-100 bg-stone-900/80 hover:bg-stone-800 border border-stone-700/80 backdrop-blur-md shadow-lg transition-all hover:border-amber-500/50"
+          <button
+            type="button"
+            onClick={() => navigateTo('home', 'reserve')}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-base font-semibold text-stone-100 bg-stone-900/80 hover:bg-stone-800 border border-stone-700/80 backdrop-blur-md shadow-lg transition-all hover:border-amber-500/50 cursor-pointer"
           >
             <span>Reserve a Table</span>
-          </a>
+          </button>
         </div>
 
         {/* Quick Info Pill Band */}

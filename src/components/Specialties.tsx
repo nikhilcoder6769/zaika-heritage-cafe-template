@@ -2,12 +2,14 @@ import React from 'react';
 import { Sparkles, MessageCircle, ArrowRight } from 'lucide-react';
 import { ClientConfig } from '../types';
 import { ScrollReveal } from './ScrollReveal';
+import { useNavigation } from '../context/NavigationContext';
 
 interface SpecialtiesProps {
   config: ClientConfig;
 }
 
 export const Specialties: React.FC<SpecialtiesProps> = ({ config }) => {
+  const { navigateTo } = useNavigation();
   return (
     <section id="specialties" className="py-24 bg-stone-900/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,13 +28,14 @@ export const Specialties: React.FC<SpecialtiesProps> = ({ config }) => {
               </p>
             </div>
 
-            <a
-              href="#menu"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-amber-400 hover:text-amber-300 transition-colors self-start md:self-end group"
+            <button
+              type="button"
+              onClick={() => navigateTo('menu')}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-amber-400 hover:text-amber-300 transition-colors self-start md:self-end group cursor-pointer"
             >
               <span>View Full 40+ Dish Menu</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </button>
           </div>
         </ScrollReveal>
 
