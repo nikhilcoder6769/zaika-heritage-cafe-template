@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { MessageCircle, Flame, Plus, Check } from 'lucide-react';
 import { ClientConfig, MenuItem, DietType } from '../types';
+import { ScrollReveal } from './ScrollReveal';
 
 interface MenuSectionProps {
   config: ClientConfig;
@@ -135,97 +136,104 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ config }) => {
 
         {/* Menu Items Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map((item) => {
+          {filteredItems.map((item, index) => {
             const qty = selectedItems[item.id] || 0;
             return (
-              <div
+              <ScrollReveal
                 key={item.id}
-                className="group p-5 rounded-2xl bg-stone-900/60 border border-stone-800/80 hover:border-amber-500/40 transition-all duration-300 flex flex-col justify-between"
+                direction="up"
+                delay={(index % 3) * 80}
+                duration={500}
+                className="h-full"
               >
-                <div>
-                  <div className="flex items-start justify-between gap-4 mb-3">
-                    <div className="flex-1">
-                      {/* Dietary Tag & Badges */}
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <span
-                          className={`w-3.5 h-3.5 rounded-sm border flex items-center justify-center ${
-                            item.diet === 'veg'
-                              ? 'border-emerald-500 text-emerald-500'
-                              : 'border-rose-500 text-rose-500'
-                          }`}
-                          title={item.diet === 'veg' ? 'Vegetarian' : 'Non-Vegetarian'}
-                        >
+                <div
+                  className="group p-5 rounded-2xl bg-stone-900/60 border border-stone-800/80 hover:border-amber-500/40 transition-all duration-300 flex flex-col justify-between h-full hover:-translate-y-1"
+                >
+                  <div>
+                    <div className="flex items-start justify-between gap-4 mb-3">
+                      <div className="flex-1">
+                        {/* Dietary Tag & Badges */}
+                        <div className="flex items-center gap-2 mb-1.5">
                           <span
-                            className={`w-2 h-2 rounded-full ${
-                              item.diet === 'veg' ? 'bg-emerald-500' : 'bg-rose-500'
+                            className={`w-3.5 h-3.5 rounded-sm border flex items-center justify-center ${
+                              item.diet === 'veg'
+                                ? 'border-emerald-500 text-emerald-500'
+                                : 'border-rose-500 text-rose-500'
                             }`}
-                          />
-                        </span>
-
-                        {item.isChefSpecial && (
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-950/60 border border-amber-500/30 px-2 py-0.5 rounded-full">
-                            Chef's Pick
+                            title={item.diet === 'veg' ? 'Vegetarian' : 'Non-Vegetarian'}
+                          >
+                            <span
+                              className={`w-2 h-2 rounded-full ${
+                                item.diet === 'veg' ? 'bg-emerald-500' : 'bg-rose-500'
+                              }`}
+                            />
                           </span>
-                        )}
 
-                        {item.spiceLevel && item.spiceLevel > 1 && (
-                          <span className="inline-flex items-center text-amber-500" title={`Spice Level ${item.spiceLevel}/3`}>
-                            {[...Array(item.spiceLevel)].map((_, i) => (
-                              <Flame key={i} className="w-3 h-3 fill-current" />
-                            ))}
-                          </span>
-                        )}
+                          {item.isChefSpecial && (
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-950/60 border border-amber-500/30 px-2 py-0.5 rounded-full">
+                              Chef's Pick
+                            </span>
+                          )}
+
+                          {item.spiceLevel && item.spiceLevel > 1 && (
+                            <span className="inline-flex items-center text-amber-500" title={`Spice Level ${item.spiceLevel}/3`}>
+                              {[...Array(item.spiceLevel)].map((_, i) => (
+                                <Flame key={i} className="w-3 h-3 fill-current" />
+                              ))}
+                            </span>
+                          )}
+                        </div>
+
+                        <h3 className="font-serif text-lg font-bold text-white group-hover:text-amber-400 transition-colors">
+                          {item.name}
+                        </h3>
                       </div>
 
-                      <h3 className="font-serif text-lg font-bold text-white group-hover:text-amber-400 transition-colors">
-                        {item.name}
-                      </h3>
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-stone-700/60">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                      </div>
                     </div>
 
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-stone-700/60">
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
+                    <p className="text-stone-400 text-xs sm:text-sm line-clamp-2 leading-relaxed mb-4">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center justify-between pt-3 border-t border-stone-800/80">
+                    <span className="font-serif text-lg font-bold text-amber-400">
+                      ₹{item.price}
+                    </span>
+
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => handleAddItem(item)}
+                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                          qty > 0
+                            ? 'bg-amber-500 text-stone-950 font-bold'
+                            : 'bg-stone-800 hover:bg-stone-700 text-stone-200'
+                        }`}
+                      >
+                        {qty > 0 ? (
+                          <>
+                            <Check className="w-3.5 h-3.5" />
+                            <span>Added ({qty})</span>
+                          </>
+                        ) : (
+                          <>
+                            <Plus className="w-3.5 h-3.5" />
+                            <span>Add to Order</span>
+                          </>
+                        )}
+                      </button>
                     </div>
                   </div>
-
-                  <p className="text-stone-400 text-xs sm:text-sm line-clamp-2 leading-relaxed mb-4">
-                    {item.description}
-                  </p>
                 </div>
-
-                <div className="flex items-center justify-between pt-3 border-t border-stone-800/80">
-                  <span className="font-serif text-lg font-bold text-amber-400">
-                    ₹{item.price}
-                  </span>
-
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={() => handleAddItem(item)}
-                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                        qty > 0
-                          ? 'bg-amber-500 text-stone-950 font-bold'
-                          : 'bg-stone-800 hover:bg-stone-700 text-stone-200'
-                      }`}
-                    >
-                      {qty > 0 ? (
-                        <>
-                          <Check className="w-3.5 h-3.5" />
-                          <span>Added ({qty})</span>
-                        </>
-                      ) : (
-                        <>
-                          <Plus className="w-3.5 h-3.5" />
-                          <span>Add to Order</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
-                </div>
-              </div>
+              </ScrollReveal>
             );
           })}
         </div>

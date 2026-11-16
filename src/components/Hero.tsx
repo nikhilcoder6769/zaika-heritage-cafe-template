@@ -14,7 +14,7 @@ export const Hero: React.FC<HeroProps> = ({ config }) => {
         <img
           src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80"
           alt="Zaika Heritage Restaurant Ambience"
-          className="w-full h-full object-cover object-center scale-105"
+          className="w-full h-full object-cover object-center animate-hero-zoom"
         />
         {/* Seamless top and bottom dark gradient blend */}
         <div className="absolute inset-0 bg-gradient-to-b from-stone-950 via-stone-950/80 to-stone-950" />
@@ -23,7 +23,7 @@ export const Hero: React.FC<HeroProps> = ({ config }) => {
 
       <div className="relative z-10 max-w-5xl mx-auto text-center space-y-6 sm:space-y-8">
         {/* Rating & Trust Badge */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-stone-900/80 border border-amber-500/30 backdrop-blur-md shadow-xl animate-fade-in">
+        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-stone-900/80 border border-amber-500/30 backdrop-blur-md shadow-xl animate-float">
           <div className="flex items-center text-amber-400">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="w-3.5 h-3.5 fill-current" />
