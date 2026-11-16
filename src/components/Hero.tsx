@@ -8,15 +8,16 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ config }) => {
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="relative min-h-[92vh] flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden bg-stone-950">
       {/* Background Hero Image with atmospheric overlays */}
       <div className="absolute inset-0 z-0">
         <img
           src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80"
           alt="Zaika Heritage Restaurant Ambience"
-          className="w-full h-full object-cover object-center scale-105 transform animate-pulse duration-[10000ms]"
+          className="w-full h-full object-cover object-center scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/80 to-stone-950/60" />
+        {/* Seamless top and bottom dark gradient blend */}
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-950 via-stone-950/80 to-stone-950" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(180,83,9,0.15)_0,transparent_70%)]" />
       </div>
 
