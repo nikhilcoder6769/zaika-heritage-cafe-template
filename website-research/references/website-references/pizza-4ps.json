@@ -1,0 +1,25 @@
+{
+  "name": "Pizza 4Ps",
+  "source_platform": "Awwwards",
+  "source_url": "https://www.awwwards.com/sites/pizza-4ps",
+  "live_url": "https://pizza4ps.com",
+  "industry": [
+    "Restaurant",
+    "Cafe"
+  ],
+  "styles": [
+    "Editorial",
+    "Storytelling",
+    "Interactive"
+  ],
+  "tech": [
+    "WebGL",
+    "Nuxt.js",
+    "Tailwind CSS"
+  ],
+  "screenshots": {},
+  "notes": "Awwwards Honorable Mention. Iconic digital menu book experience, farm-to-table storytelling, and transparent culinary sourcing presentation.",
+  "rank_score": 0,
+  "id": "pizza-4ps",
+  "saved_at": "2026-11-16T13:16:47.442028"
+}

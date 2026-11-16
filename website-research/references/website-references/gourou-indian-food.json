@@ -1,0 +1,24 @@
+{
+  "name": "Gourou Indian Food",
+  "source_platform": "Awwwards",
+  "source_url": "https://www.awwwards.com/sites/gourou-indian-street-food",
+  "live_url": "https://gourou.fr",
+  "industry": [
+    "Restaurant",
+    "Food & Drink"
+  ],
+  "styles": [
+    "Editorial",
+    "Warm Tones",
+    "High Contrast"
+  ],
+  "tech": [
+    "Webflow",
+    "GSAP"
+  ],
+  "screenshots": {},
+  "notes": "Awwwards recognized for marrying raw street energy with Irani cafe elegance. Deep warm saffron & terracotta color palette, smooth category transitions, and intuitive digital menu.",
+  "rank_score": 0,
+  "id": "gourou-indian-food",
+  "saved_at": "2026-11-16T13:16:39.919165"
+}

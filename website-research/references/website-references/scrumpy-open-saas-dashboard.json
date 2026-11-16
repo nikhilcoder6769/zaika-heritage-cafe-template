@@ -1,0 +1,22 @@
+{
+  "name": "Scrumpy Open SaaS Dashboard",
+  "source_platform": "Lapa Ninja",
+  "source_url": "https://www.lapa.ninja/post/scrumpy-open-saas-dashboard/",
+  "live_url": "https://scrumpy.io",
+  "industry": [
+    "SaaS",
+    "Business"
+  ],
+  "styles": [
+    "Minimal",
+    "Illustration"
+  ],
+  "tech": [],
+  "screenshots": {
+    "desktop": "/data/user/0/com.termux/files/home/.gemini/antigravity-cli/brain/ad02e262-9376-4156-9da1-e83f0a1cdced/screenshots/lapaninja_detail.jpg"
+  },
+  "notes": "Dashboard design for agile project management emphasizing fun and clean typography.",
+  "rank_score": 0,
+  "id": "scrumpy-open-saas-dashboard",
+  "saved_at": "2026-11-16T12:04:47.572138"
+}

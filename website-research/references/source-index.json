@@ -1,0 +1,180 @@
+{
+  "system": "Unified Design Intelligence System",
+  "version": "1.0.0",
+  "updated_at": "2026-11-16T13:16:47.445271",
+  "total_indexed": 7,
+  "sources_active": [
+    "siteinspire",
+    "onepagelove",
+    "lapaninja",
+    "awwwards",
+    "landbook",
+    "godly",
+    "refero"
+  ],
+  "references": [
+    {
+      "id": "nick-jones",
+      "name": "Nick Jones",
+      "source_platform": "Siteinspire",
+      "source_url": "https://www.siteinspire.com/website/310-nick-jones",
+      "live_url": "http://www.narrowdesign.com/?ref=siteinspire",
+      "industry": [
+        "Portfolio",
+        "Design"
+      ],
+      "styles": [
+        "Unusual Navigation",
+        "Unusual Layout",
+        "Minimal"
+      ],
+      "tech": [],
+      "rank_score": 0,
+      "screenshots": {
+        "desktop": "/data/user/0/com.termux/files/home/.gemini/antigravity-cli/brain/ad02e262-9376-4156-9da1-e83f0a1cdced/screenshots/siteinspire_detail.jpg"
+      },
+      "updated_at": "2026-11-16T12:04:46.358936"
+    },
+    {
+      "id": "justin-schüler",
+      "name": "Justin Schüler",
+      "source_platform": "One Page Love",
+      "source_url": "https://onepagelove.com/justin-schuler",
+      "live_url": "https://justinschueler.com/?ref=onepagelove",
+      "industry": [
+        "Portfolio",
+        "Personal"
+      ],
+      "styles": [
+        "Minimal",
+        "Scroll Effects",
+        "Typographic"
+      ],
+      "tech": [
+        "GSAP",
+        "Next.js",
+        "Prismic",
+        "Tailwind CSS"
+      ],
+      "rank_score": 0,
+      "screenshots": {
+        "desktop": "/data/user/0/com.termux/files/home/.gemini/antigravity-cli/brain/ad02e262-9376-4156-9da1-e83f0a1cdced/screenshots/onepagelove_detail.jpg"
+      },
+      "updated_at": "2026-11-16T12:04:46.963976"
+    },
+    {
+      "id": "scrumpy-open-saas-dashboard",
+      "name": "Scrumpy Open SaaS Dashboard",
+      "source_platform": "Lapa Ninja",
+      "source_url": "https://www.lapa.ninja/post/scrumpy-open-saas-dashboard/",
+      "live_url": "https://scrumpy.io",
+      "industry": [
+        "SaaS",
+        "Business"
+      ],
+      "styles": [
+        "Minimal",
+        "Illustration"
+      ],
+      "tech": [],
+      "rank_score": 0,
+      "screenshots": {
+        "desktop": "/data/user/0/com.termux/files/home/.gemini/antigravity-cli/brain/ad02e262-9376-4156-9da1-e83f0a1cdced/screenshots/lapaninja_detail.jpg"
+      },
+      "updated_at": "2026-11-16T12:04:47.572138"
+    },
+    {
+      "id": "madie",
+      "name": "Madie",
+      "source_platform": "One Page Love",
+      "source_url": "https://onepagelove.com/madie",
+      "live_url": "https://madie.es",
+      "industry": [
+        "Restaurant",
+        "Food & Drink",
+        "Bakery"
+      ],
+      "styles": [
+        "Minimal",
+        "Earth Tones",
+        "Editorial"
+      ],
+      "tech": [
+        "GSAP",
+        "Next.js",
+        "Prismic",
+        "Tailwind CSS"
+      ],
+      "rank_score": 0,
+      "screenshots": {},
+      "updated_at": "2026-11-16T12:04:48.195116"
+    },
+    {
+      "id": "alta-trattoria",
+      "name": "Alta Trattoria",
+      "source_platform": "Siteinspire",
+      "source_url": "https://www.siteinspire.com/website/13005-alta-trattoria",
+      "live_url": "https://altatrattoria.com",
+      "industry": [
+        "Restaurant",
+        "Food & Drink"
+      ],
+      "styles": [
+        "Classical",
+        "Editorial",
+        "High Contrast"
+      ],
+      "tech": [],
+      "rank_score": 0,
+      "screenshots": {},
+      "updated_at": "2026-11-16T12:04:48.661724"
+    },
+    {
+      "id": "gourou-indian-food",
+      "name": "Gourou Indian Food",
+      "source_platform": "Awwwards",
+      "source_url": "https://www.awwwards.com/sites/gourou-indian-street-food",
+      "live_url": "https://gourou.fr",
+      "industry": [
+        "Restaurant",
+        "Food & Drink"
+      ],
+      "styles": [
+        "Editorial",
+        "Warm Tones",
+        "High Contrast"
+      ],
+      "tech": [
+        "Webflow",
+        "GSAP"
+      ],
+      "rank_score": 0,
+      "screenshots": {},
+      "updated_at": "2026-11-16T13:16:39.919165"
+    },
+    {
+      "id": "pizza-4ps",
+      "name": "Pizza 4Ps",
+      "source_platform": "Awwwards",
+      "source_url": "https://www.awwwards.com/sites/pizza-4ps",
+      "live_url": "https://pizza4ps.com",
+      "industry": [
+        "Restaurant",
+        "Cafe"
+      ],
+      "styles": [
+        "Editorial",
+        "Storytelling",
+        "Interactive"
+      ],
+      "tech": [
+        "WebGL",
+        "Nuxt.js",
+        "Tailwind CSS"
+      ],
+      "rank_score": 0,
+      "screenshots": {},
+      "updated_at": "2026-11-16T13:16:47.442028"
+    }
+  ]
+}

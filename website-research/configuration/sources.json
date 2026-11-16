@@ -1,0 +1,139 @@
+{
+  "version": "1.0.0",
+  "system": "Unified Design Intelligence System",
+  "sources": {
+    "siteinspire": {
+      "name": "SiteInspire",
+      "url": "https://www.siteinspire.com",
+      "search_url_template": "https://www.siteinspire.com/search?query={query}",
+      "access_priority": 1,
+      "connection_type": "browser_mcp",
+      "access_status": "operational",
+      "auth_required": false,
+      "capabilities": {
+        "search_by_industry": true,
+        "search_by_style": true,
+        "search_by_category": true,
+        "inspect_details": true,
+        "capture_screenshots": true,
+        "credits_attribution": true
+      },
+      "supported_filters": ["popular", "styles", "types", "subjects", "platforms"]
+    },
+    "onepagelove": {
+      "name": "One Page Love",
+      "url": "https://onepagelove.com",
+      "search_url_template": "https://onepagelove.com/genre/{genre}",
+      "direct_search_url": "https://onepagelove.com/?s={query}",
+      "access_priority": 1,
+      "connection_type": "browser_mcp_and_streamable_mcp",
+      "mcp_endpoint": "https://api.onepagelove.com/mcp",
+      "access_status": "operational",
+      "auth_required": false,
+      "capabilities": {
+        "search_by_industry": true,
+        "search_by_style": true,
+        "search_by_section": true,
+        "search_by_typeface": true,
+        "inspect_details": true,
+        "capture_screenshots": true,
+        "tech_stack_identification": true
+      },
+      "supported_filters": ["genre", "style", "platform", "tech", "color", "section"]
+    },
+    "lapaninja": {
+      "name": "Lapa Ninja",
+      "url": "https://www.lapa.ninja",
+      "search_url_template": "https://www.lapa.ninja/search/?q={query}",
+      "access_priority": 1,
+      "connection_type": "browser_mcp",
+      "access_status": "operational",
+      "auth_required": false,
+      "capabilities": {
+        "search_by_industry": true,
+        "search_by_category": true,
+        "inspect_details": true,
+        "capture_screenshots": true,
+        "multi_version_inspection": true
+      },
+      "supported_filters": ["category", "tag", "templates"]
+    },
+    "awwwards": {
+      "name": "Awwwards",
+      "url": "https://www.awwwards.com",
+      "search_url_template": "https://www.awwwards.com/websites/?search={query}",
+      "access_priority": 1,
+      "connection_type": "browser_mcp",
+      "access_status": "operational",
+      "auth_required": false,
+      "capabilities": {
+        "search_by_industry": true,
+        "search_by_category": true,
+        "search_by_tech": true,
+        "inspect_details": true,
+        "capture_screenshots": true,
+        "award_scores": true
+      },
+      "supported_filters": ["awards", "category", "tag", "technology", "country", "font"]
+    },
+    "landbook": {
+      "name": "Land-book",
+      "url": "https://land-book.com",
+      "search_url_template": "https://land-book.com/websites?query={query}",
+      "sections_url": "https://land-book.com/sections",
+      "access_priority": 1,
+      "connection_type": "browser_mcp",
+      "access_status": "operational",
+      "auth_required": false,
+      "capabilities": {
+        "search_by_industry": true,
+        "search_by_section": true,
+        "search_by_style": true,
+        "inspect_details": true,
+        "capture_screenshots": true
+      },
+      "supported_filters": ["landing", "portfolio", "blog", "ecommerce", "sections"]
+    },
+    "godly": {
+      "name": "Godly (Recent)",
+      "url": "https://godly.website",
+      "redirected_url": "https://recent.design/?ref=godly",
+      "access_priority": 1,
+      "connection_type": "browser_mcp",
+      "access_status": "operational",
+      "auth_required": false,
+      "capabilities": {
+        "search_by_category": true,
+        "inspect_details": true,
+        "capture_screenshots": true,
+        "motion_inspection": true
+      },
+      "supported_filters": ["web", "interface", "branding", "motion", "illustration"]
+    },
+    "refero": {
+      "name": "Refero",
+      "url": "https://refero.design",
+      "access_priority": 4,
+      "connection_type": "browser_mcp_public",
+      "mcp_endpoint": "Refero Pro (requires paid subscription)",
+      "access_status": "operational_public_only",
+      "auth_required": "paid_for_mcp_free_for_public_web",
+      "capabilities": {
+        "search_by_pattern": true,
+        "search_by_flow": true,
+        "search_by_ui_element": true,
+        "inspect_details": true
+      },
+      "supported_filters": ["page_types", "flows", "ux_patterns", "ui_elements"]
+    },
+    "webanatomy": {
+      "name": "Web Anatomy",
+      "url": "https://webanatomy.ai",
+      "access_priority": 5,
+      "connection_type": "external_consulting_methodology",
+      "access_status": "no_public_open_gallery",
+      "auth_required": false,
+      "notes": "Web Anatomy operates as an SEO/CRO agency and methodology framework rather than an open public API/gallery. Its structured section-by-section audit model is codified into this intelligence system."
+    }
+  }
+}

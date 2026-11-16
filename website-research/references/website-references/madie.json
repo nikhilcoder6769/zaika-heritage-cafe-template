@@ -1,0 +1,27 @@
+{
+  "name": "Madie",
+  "source_platform": "One Page Love",
+  "source_url": "https://onepagelove.com/madie",
+  "live_url": "https://madie.es",
+  "industry": [
+    "Restaurant",
+    "Food & Drink",
+    "Bakery"
+  ],
+  "styles": [
+    "Minimal",
+    "Earth Tones",
+    "Editorial"
+  ],
+  "tech": [
+    "GSAP",
+    "Next.js",
+    "Prismic",
+    "Tailwind CSS"
+  ],
+  "screenshots": {},
+  "notes": "Charming one-pager for Madrid madeleine & coffee shop with slick overlay navigation.",
+  "rank_score": 0,
+  "id": "madie",
+  "saved_at": "2026-11-16T12:04:48.195116"
+}

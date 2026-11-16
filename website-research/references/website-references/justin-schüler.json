@@ -1,0 +1,28 @@
+{
+  "name": "Justin Schüler",
+  "source_platform": "One Page Love",
+  "source_url": "https://onepagelove.com/justin-schuler",
+  "live_url": "https://justinschueler.com/?ref=onepagelove",
+  "industry": [
+    "Portfolio",
+    "Personal"
+  ],
+  "styles": [
+    "Minimal",
+    "Scroll Effects",
+    "Typographic"
+  ],
+  "tech": [
+    "GSAP",
+    "Next.js",
+    "Prismic",
+    "Tailwind CSS"
+  ],
+  "screenshots": {
+    "desktop": "/data/user/0/com.termux/files/home/.gemini/antigravity-cli/brain/ad02e262-9376-4156-9da1-e83f0a1cdced/screenshots/onepagelove_detail.jpg"
+  },
+  "notes": "Calm, considered portfolio using narrow editorial column, generous whitespace and quiet card animations.",
+  "rank_score": 0,
+  "id": "justin-schüler",
+  "saved_at": "2026-11-16T12:04:46.963976"
+}

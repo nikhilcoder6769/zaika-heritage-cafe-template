@@ -1,0 +1,23 @@
+{
+  "name": "Nick Jones",
+  "source_platform": "Siteinspire",
+  "source_url": "https://www.siteinspire.com/website/310-nick-jones",
+  "live_url": "http://www.narrowdesign.com/?ref=siteinspire",
+  "industry": [
+    "Portfolio",
+    "Design"
+  ],
+  "styles": [
+    "Unusual Navigation",
+    "Unusual Layout",
+    "Minimal"
+  ],
+  "tech": [],
+  "screenshots": {
+    "desktop": "/data/user/0/com.termux/files/home/.gemini/antigravity-cli/brain/ad02e262-9376-4156-9da1-e83f0a1cdced/screenshots/siteinspire_detail.jpg"
+  },
+  "notes": "Experimental portfolio with horizontal canvas and high-concept navigation.",
+  "rank_score": 0,
+  "id": "nick-jones",
+  "saved_at": "2026-11-16T12:04:46.358936"
+}
